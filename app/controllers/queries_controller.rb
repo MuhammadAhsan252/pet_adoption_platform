@@ -2,7 +2,7 @@ class QueriesController < ApplicationController
 
     def create
         @query = Query.new(query_params)
-        if verify_recaptcha(model: @query) && @query.save
+        if @query.save
             # QueryMailer.with(query: @query).new_query.deliver_later
             redirect_to root_path, notice: "Query sent!"
         else
