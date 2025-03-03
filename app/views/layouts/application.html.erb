@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pet Cure Hub</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="p:domain_verify" content="6486e1e111ee9d8dda967c8e3b04d484"/>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= favicon_link_tag asset_path('favicon.png') %>
+    
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.3/components/navbars/navbar-1/assets/css/navbar-1.css">
+    <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.3/components/heroes/hero-5/assets/css/hero-5.css" />
+    <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.3/components/services/service-7/assets/css/service-7.css" />
+    <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.3/components/blogs/blog-5/assets/css/blog-5.css">
+    <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.3/components/contacts/contact-4/assets/css/contact-4.css" />
+    <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.3/components/footers/footer-6/assets/css/footer-6.css">
+    <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.2/components/logins/login-1/assets/css/login-1.css" />
+    <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.3/components/tables/table-1/assets/css/table-1.css">
+    <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.3/components/post-paginations/post-pagination-2/assets/css/post-pagination-2.css">
+    <script src="https://unpkg.com/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <script src="https://unpkg.com/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z1LRBHCE42"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-Z1LRBHCE42');
+    </script>
+
+  </head>
+  <%= render 'shared/navbar' %>
+  <body>
+    <%= render 'shared/notice'%>
+    <%= yield %>
+    <% if controller.class.name.split('::').first != 'Admins' %>
+      <%= render 'shared/footer' %>
+    <% end %>
+  </body>
+</html>

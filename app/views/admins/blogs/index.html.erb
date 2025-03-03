@@ -1,0 +1,30 @@
+<div class="container dashboard">
+    <div class="row">
+        <div class="col-2">
+            <%= render 'shared/sidebar' %>
+        </div>
+        <div class="col-md-10">
+          <section class="bsb-blog-5 py-3 py-md-5 py-xl-8">
+            <div class="container">
+                <div class="row justify-content-md-center">
+                <div class="col-12 col-md-10 col-lg-8 col-xl-7 col-xxl-6">
+                    <h2 class="display-5 mb-4 mb-md-5 text-center">
+                      Blogs
+                      <%= link_to 'New Blog', new_blog_path, class: 'btn btn-primary' %>
+                    </h2>
+                    <hr class="w-50 mx-auto mb-5 mb-xl-9 border-dark-subtle">
+                </div>
+                </div>
+            </div>
+
+            <div class="container overflow-hidden">
+                <div class="row gy-4 gy-md-5 gx-xl-6 gy-xl-6 gx-xxl-9 gy-xxl-9">
+                  <% @blogs.each do |blog| %>
+                    <%= render blog %>
+                  <% end %>
+                </div>
+            </div>
+          </section>
+        </div>
+    </div>
+</div>

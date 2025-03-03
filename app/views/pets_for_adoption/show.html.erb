@@ -1,0 +1,196 @@
+<!-- Profile 1 - Bootstrap Brain Component -->
+<section class="bg-light py-3 py-md-5 py-xl-8">
+  <div class="container">
+    <div class="row gy-4 gy-lg-0">
+      <div class="col-12 col-lg-4 col-xl-3">
+        <div class="row gy-4">
+          <div class="col-12">
+            <div class="card widget-card border-light shadow-sm">
+              <div class="card-header text-bg-primary">Welcome to Pet profile</div>
+              <div class="card-body">
+                <div class="text-center mb-3">
+                    <% if @pet["photos"].any? %>
+                        <img class="img-fluid rounded" src="<%= @pet["photos"][0]["small"] %>" alt="photo">
+                    <% else %>
+                        <img class="img-fluid rounded" src="https://via.placeholder.com/800x600.png" alt="photo">
+                    <% end %>
+                </div>
+                <h5 class="text-center mb-1"><%= @pet['name'] %></h5>
+                <p class="text-center text-secondary mb-4"><%= @pet['type'] %></p>
+                <ul class="list-group list-group-flush mb-4">
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <h6 class="m-0">Size</h6>
+                    <span><%= @pet['size'] %></span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <h6 class="m-0">Age</h6>
+                    <span><%= @pet['age'] %></span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <h6 class="m-0">Gender</h6>
+                    <span><%= @pet['gender'] %></span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="card widget-card border-light shadow-sm">
+              <div class="card-header text-bg-primary">About Me</div>
+              <div class="card-body">
+                <ul class="list-group list-group-flush mb-0">
+                  <li class="list-group-item">
+                    <h6 class="mb-1">
+                      <span class="bii bi-house-fill me-2"></span>
+                      Address
+                    </h6>
+                    <span><%= @pet['contact']['address']['address1'].present? ? @pet['contact']['address']['address1']  : 'N/A' %></span>
+                  </li>
+                  <li class="list-group-item">
+                    <h6 class="mb-1">
+                      <span class="bii bi-geo-alt-fill me-2"></span>
+                      Location
+                    </h6>
+                    <span>
+                        <%= @pet['contact']['address']['city'] %>, 
+                        <%= @pet['contact']['address']['state'] %>, 
+                        <%= @pet['contact']['address']['country'] %>
+                    </span>
+                  </li>
+                  <li class="list-group-item">
+                    <h6 class="mb-1">
+                      <span class="bii bi-phone-fill me-2"></span>
+                      Phone No
+                    </h6>
+                    <span><%= @pet['contact']['phone'].present? ? @pet['contact']['phone'] : 'N/A' %></span>
+                  </li>
+                  <li class="list-group-item">
+                    <h6 class="mb-1">
+                      <span class="bii bi-envelope-fill me-2"></span>
+                      Email
+                    </h6>
+                    <span><%= @pet['contact']['email'].present? ? @pet['contact']['email'] : 'N/A' %></span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="card widget-card border-light shadow-sm">
+              <div class="card-header text-bg-primary">Attributes</div>
+              <div class="card-body">
+                <% @pet['tags'].each do |tag| %>
+                    <span class="badge text-bg-primary"><%= tag %></span>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-8 col-xl-9">
+        <div class="card widget-card border-light shadow-sm">
+          <div class="card-body p-4">
+            <ul class="nav nav-tabs" id="profileTab" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview-tab-pane" type="button" role="tab" aria-controls="overview-tab-pane" aria-selected="true">Overview</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="photo-tab" data-bs-toggle="tab" data-bs-target="#photo-tab-pane" type="button" role="tab" aria-controls="photo-tab-pane" aria-selected="false">More Photos</button>
+              </li>
+            </ul>
+            <div class="tab-content pt-4" id="profileTabContent">
+              <div class="tab-pane fade show active" id="overview-tab-pane" role="tabpanel" aria-labelledby="overview-tab" tabindex="0">
+                <h5 class="mb-3">Specifications</h5>
+                <div class="row g-0">
+                  <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
+                    <div class="p-2">Breed</div>
+                  </div>
+                  <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                    <div class="p-2"><%= @pet['breeds']['primary'] %></div>
+                  </div>
+                  <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
+                    <div class="p-2">Color</div>
+                  </div>
+                  <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                    <div class="p-2"><%= @pet['colors']['primary'] %></div>
+                  </div>
+                  <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
+                    <div class="p-2">Spayed Neutered</div>
+                  </div>
+                  <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                    <div class="p-2"><%= @pet['attributes']['spayed_neutered'] ? "Yes" : "No" %></div>
+                  </div>
+                  <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
+                    <div class="p-2">House Trained</div>
+                  </div>
+                  <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                    <div class="p-2"><%= @pet['attributes']['house_trained'] ? "Yes" : "No" %></div>
+                  </div>
+                  <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
+                    <div class="p-2">DeClawed</div>
+                  </div>
+                  <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                    <div class="p-2"><%= @pet['attributes']['declawed'] ? "Yes" : "No" %></div>
+                  </div>
+                  <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
+                    <div class="p-2">Special Needs</div>
+                  </div>
+                  <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                    <div class="p-2"><%= @pet['attributes']['special_needs'] ? "Yes" : "No" %></div>
+                  </div>
+                  <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
+                    <div class="p-2">Shots Current</div>
+                  </div>
+                  <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                    <div class="p-2"><%= @pet['attributes']['shots_current'] ? "Yes" : "No" %></div>
+                  </div>
+                  <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
+                    <div class="p-2">Good with Children</div>
+                  </div>
+                  <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                    <div class="p-2"><%= @pet['environment']['children'] ? "Yes" : "No" %></div>
+                  </div>
+                  <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
+                    <div class="p-2">Good with Cats</div>
+                  </div>
+                  <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                    <div class="p-2"><%= @pet['environment']['cats'] ? "Yes" : "No" %></div>
+                  </div>
+                  <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
+                    <div class="p-2">Good with Dogs</div>
+                  </div>
+                  <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                    <div class="p-2"><%= @pet['environment']['dogs'] ? "Yes" : "No" %></div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="photo-tab-pane" role="tabpanel" aria-labelledby="photo-tab" tabindex="0">
+                <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <% @pet['photos'].each_with_index do |photo, index| %>
+                            <div class="carousel-item <%= index == 0 ? 'active': ''%>">
+                                <img src="<%= photo['full'] %>" class="d-block w-100" alt="...">
+                            </div>
+                        <% end %>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 text-end">
+        <p>Powered by Petfinder</p>
+      </div>
+    </div>
+  </div>
+
+</section>

@@ -1,0 +1,47 @@
+<%= form_with(model: blog, data: { controller: "editor" }) do |form| %>
+  <div class="row gy-3 gy-md-4 overflow-hidden">
+    <% if blog.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(blog.errors.count, "error") %> prohibited this blog from being saved:</h2>
+
+        <ul>
+          <% blog.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="col-12 col-md-10 offset-md-1">
+      <label for="title" class="form-label">Title <span class="text-danger">*</span></label>
+      <%= form.text_field :title, class: "form-control" %>
+    </div>
+     
+    <div class="col-12 col-md-10 offset-md-1">
+      <label for="category" class="form-label">Category <span class="text-danger">*</span></label>
+      <%= form.select :category_id, Category.all.map { |category| [category.name, category.id] }, { include_blank: true }, class: "form-control", id: "category_select" %>
+    </div>
+
+    <div class="col-12 col-md-10 offset-md-1">
+      <label for="subcategory" class="form-label">SubCategory <span class="text-danger">*</span></label>
+      <%= form.select :subcategory_id, options_for_select(subcategories_for_selected_category(@blog&.category_id), @blog&.subcategory_id), { include_blank: true }, class: "form-control", id: "subcategory_select" %>
+    </div>
+
+    
+    <div class="col-12 col-md-10 offset-md-1">
+      <label for="cover_image" class="form-label">Cover Image <span class="text-danger">*</span></label>
+      <%= form.file_field :cover_image, class: "form-control" %>
+    </div>
+
+    <div class="col-12">
+      <%= form.hidden_field :content, id: "blog_content_hidden" %>
+      <div id="blog_content"
+      data-editor-target="blog_content">
+      </div>
+    </div>
+    <div class="col-12 col-md-10 offset-md-1">
+      <div class="d-grid">
+        <%= form.submit class: "btn btn-lg btn-primary" %>
+      </div>
+    </div>
+  </div>
+<% end %>
