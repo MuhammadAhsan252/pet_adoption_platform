@@ -1,5 +1,5 @@
-<!-- Login 1 - Bootstrap Brain Component -->
-<div class="bg-light py-3 py-md-5 py-xl-8">
+<!-- Login 1 -  Component -->
+<div class="bg-light py-3 py-md-5">
   <div class="container">
     <div class="row justify-content-md-center">
       <div class="col-12 col-md-11 col-lg-8 col-xl-7 col-xxl-6">
@@ -8,13 +8,12 @@
             <div class="col-12">
               <div class="text-center mb-5">
                 <a href="#!">
-                  <%= image_tag('logo.png', width: 250, height: 57) %>
+                  <%= image_tag 'logo.png', alt: 'Logo', width: '150', height: '50', class: 'me-2' %>
                 </a>
               </div>
             </div>
           </div>
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-            <%= render "admins/shared/error_messages", resource: resource %>
             <div class="row gy-3 gy-md-4 overflow-hidden">
               <div class="col-12">
                 <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
@@ -41,7 +40,7 @@
               </div>
               <div class="col-12">
                 <div class="d-grid">
-                  <%= f.submit "Log in", class:"btn btn-primary btn-lg" %>
+                  <%= f.submit "Log In", class:"btn btn-success btn-lg" %>
                 </div>
               </div>
             </div>
@@ -50,7 +49,7 @@
             <div class="col-12">
               <hr class="mt-5 mb-4 border-secondary-subtle">
               <div class="d-flex gap-2 gap-md-4 flex-column flex-md-row justify-content-md-center">
-                <%= render "admins/shared/links" %>
+                <%= link_to "Forgot password", new_admin_password_path, class: "link-secondary text-decoration-none" %>
               </div>
             </div>
           </div>

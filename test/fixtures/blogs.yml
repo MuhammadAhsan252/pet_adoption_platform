@@ -2,8 +2,10 @@
 
 one:
   title: MyString
-  content: 
+  category: MyString
+  tags: MyString
 
 two:
   title: MyString
-  content: 
+  category: MyString
+  tags: MyString

@@ -1,25 +1,66 @@
-<h2>Change your password</h2>
-
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "admins/shared/error_messages", resource: resource %>
-  <%= f.hidden_field :reset_password_token %>
-
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+<!-- Login 1 -  Component -->
+<div class="bg-light py-3 py-md-5">
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-12 col-md-11 col-lg-8 col-xl-7 col-xxl-6">
+        <div class="bg-white p-4 p-md-5 rounded shadow-sm">
+          <div class="row">
+            <div class="col-12">
+              <div class="text-center mb-5">
+                <a href="#!">
+                  <%= image_tag 'logo.png', alt: 'Logo', width: '150', height: '50', class: 'me-2' %>
+                </a>
+              </div>
+            </div>
+          </div>
+          <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+            <div class="row gy-3 gy-md-4 overflow-hidden">
+              <%= render "admins/shared/error_messages", resource: resource %>
+              <%= f.hidden_field :reset_password_token %>
+              <div class="col-12">
+                <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
+                <% if @minimum_password_length %>
+                  <em>(<%= @minimum_password_length %> characters minimum)</em>
+                <% end %><br />
+                <div class="input-group">
+                  <span class="input-group-text">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-key" viewBox="0 0 16 16">
+                      <path d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8zm4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5z" />
+                      <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                    </svg>
+                  </span>
+                  <%= f.password_field :password, autocomplete: "new-password", class: "form-control", required: true %>
+                </div>
+              </div>
+              <div class="col-12">
+                <label for="password_confirmation" class="form-label">Password Confirmation <span class="text-danger">*</span></label>
+                <div class="input-group">
+                  <span class="input-group-text">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-key" viewBox="0 0 16 16">
+                      <path d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8zm4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5z" />
+                      <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                    </svg>
+                  </span>
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", required: true %>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="d-grid">
+                  <%= f.submit "Change my password", class:"btn btn-success btn-lg" %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+          <div class="row">
+            <div class="col-12">
+              <hr class="mt-5 mb-4 border-secondary-subtle">
+              <div class="d-flex gap-2 gap-md-4 flex-column flex-md-row justify-content-md-center">
+                <%= link_to "Log In", new_admin_session_path, class: "link-secondary text-decoration-none" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
-<% end %>
-
-<%= render "admins/shared/links" %>
+</div>

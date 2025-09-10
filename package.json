@@ -1,23 +1,14 @@
 {
   "name": "app",
-  "private": "true",
-  "dependencies": {
-    "@editorjs/code": "^2.8.0",
-    "@editorjs/editorjs": "^2.26.5",
-    "@editorjs/header": "^2.7.0",
-    "@editorjs/image": "^2.8.1",
-    "@editorjs/list": "^1.8.0",
-    "@editorjs/paragraph": "^2.9.0",
-    "@hotwired/stimulus": "^3.2.1",
-    "@hotwired/turbo-rails": "^7.3.0",
-    "@popperjs/core": "^2.11.7",
-    "bootstrap": "^5.2.3",
-    "bootstrap-icons": "^1.10.5",
-    "esbuild": "^0.17.18",
-    "sass": "^1.62.1"
-  },
+  "private": true,
   "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
-    "build:css": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets"
+  },
+  "dependencies": {
+    "@hotwired/stimulus": "^3.2.2",
+    "@hotwired/turbo-rails": "^8.0.13",
+    "@rails/actiontext": "^8.0.201",
+    "esbuild": "^0.25.0",
+    "trix": "^2.1.15"
   }
 }

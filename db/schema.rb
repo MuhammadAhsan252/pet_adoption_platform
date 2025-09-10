@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_24_101454) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_09_095905) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension "pg_catalog.plpgsql"
+
+  create_table "action_text_rich_texts", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "body"
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
+  end
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -54,32 +64,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_24_101454) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "blog_images", force: :cascade do |t|
-    t.bigint "blog_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["blog_id"], name: "index_blog_images_on_blog_id"
-  end
-
   create_table "blogs", force: :cascade do |t|
     t.string "title"
-    t.jsonb "content"
+    t.string "category"
+    t.string "slug"
+    t.string "tags", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "slug"
-    t.bigint "category_id", null: false
-    t.bigint "subcategory_id", null: false
-    t.index ["category_id"], name: "index_blogs_on_category_id"
     t.index ["slug"], name: "index_blogs_on_slug", unique: true
-    t.index ["subcategory_id"], name: "index_blogs_on_subcategory_id"
-  end
-
-  create_table "categories", force: :cascade do |t|
-    t.string "name"
-    t.string "slug"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["slug"], name: "index_categories_on_slug", unique: true
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -93,28 +85,22 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_24_101454) do
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
-  create_table "queries", force: :cascade do |t|
-    t.string "full_name"
-    t.string "email"
-    t.text "message"
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "subcategories", force: :cascade do |t|
-    t.string "name"
-    t.string "slug"
-    t.bigint "category_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_subcategories_on_category_id"
-    t.index ["slug"], name: "index_subcategories_on_slug", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "blog_images", "blogs"
-  add_foreign_key "blogs", "categories"
-  add_foreign_key "blogs", "subcategories"
-  add_foreign_key "subcategories", "categories"
 end

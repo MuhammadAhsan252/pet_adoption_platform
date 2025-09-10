@@ -1,0 +1,89 @@
+<!-- Login 1 -  Component -->
+<div class="bg-light py-3 py-md-5">
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-12 col-md-11 col-lg-8 col-xl-7 col-xxl-6">
+        <div class="bg-white p-4 p-md-5 rounded shadow-sm">
+          <div class="row">
+            <div class="col-12">
+              <div class="text-center mb-5">
+                <a href="#!">
+                  <%= image_tag 'logo.png', alt: 'Logo', width: '150', height: '50', class: 'me-2' %>
+                </a>
+              </div>
+            </div>
+          </div>
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+            <div class="row gy-3 gy-md-4 overflow-hidden">
+              <%= render "users/shared/error_messages", resource: resource %>
+              <div class="col-12">
+                <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+                <div class="input-group">
+                  <span class="input-group-text">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                      <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z" />
+                    </svg>
+                  </span>
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", required: true %>
+                </div>
+              </div>
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+              <% end %>
+              <div class="col-12">
+                <label for="password" class="form-label">Password <i>(leave blank if you don't want to change it)</i></label>
+                <div class="input-group">
+                  <span class="input-group-text">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-key" viewBox="0 0 16 16">
+                      <path d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8zm4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5z" />
+                      <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                    </svg>
+                  </span>
+                  <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+                </div>
+                <% if @minimum_password_length %>
+                  <em>(<%= @minimum_password_length %> characters minimum)</em>
+                <% end %><br />
+              </div>
+              <div class="col-12">
+                <label for="password_confirmation" class="form-label">Password Confirmation </label>
+                <div class="input-group">
+                  <span class="input-group-text">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-key" viewBox="0 0 16 16">
+                      <path d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8zm4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5z" />
+                      <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                    </svg>
+                  </span>
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+                </div>
+              </div>
+              <div class="col-12">
+                <label for="current_password" class="form-label">Current Password <i>(we need your current password to confirm your changes)</i></label>
+                <div class="input-group">
+                  <span class="input-group-text">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-key" viewBox="0 0 16 16">
+                      <path d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8zm4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5z" />
+                      <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                    </svg>
+                  </span>
+                  <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control", required: true %>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="d-grid">
+                  <%= f.submit "Update", class:"btn btn-success btn-lg" %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+          <div class="row">
+            <div class="col-12">
+              <hr class="mt-5 mb-4 border-secondary-subtle">
+              <p class="m-0 text-secondary text-center"><%= link_to "Back", :back, class: "link-primary text-decoration-none" %> </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

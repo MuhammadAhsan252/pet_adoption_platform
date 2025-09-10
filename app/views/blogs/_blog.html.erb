@@ -15,14 +15,6 @@
         </figure>
         <div class="card-body m-0 p-0">
         <div class="entry-header mb-3">
-            <ul class="entry-meta list-unstyled d-flex mb-3 gap-2">
-              <li>
-                  <a class="d-inline-flex px-2 py-1 link-accent text-accent-emphasis bg-accent-subtle rounded-2 text-decoration-none fs-7" href="<%= blogs_by_category_path(blog.category) %>"><%= blog.category.name %></a>
-              </li>
-              <li>
-                  <a class="d-inline-flex px-2 py-1 link-accent text-accent-emphasis bg-accent-subtle rounded-2 text-decoration-none fs-7" href="<%= blogs_by_subcategory_path(blog.category, blog.subcategory) %>"><%= blog.subcategory.name %></a>
-              </li>
-            </ul>
             <h2 class="card-title entry-title h4 m-0">
             <a class="link-dark text-decoration-none" href="<%= blog_path(blog) %>"><%= blog.title %></a>
             </h2>

@@ -3,14 +3,6 @@
     <div class="row gy-3 gy-lg-0 align-items-lg-center justify-content-lg-between">
       <div class="col-12 col-lg-7 order-1 order-lg-0">
         <div class="entry-header mb-3">
-          <ul class="entry-meta list-unstyled d-flex mb-3 gap-2">
-            <li>
-                <a class="d-inline-flex px-2 py-1 link-accent text-accent-emphasis bg-accent-subtle rounded-2 text-decoration-none fs-7" href="<%= blogs_by_category_path(@blog.category) %>"><%= @blog.category.name %></a>
-            </li>
-            <li>
-                <a class="d-inline-flex px-2 py-1 link-accent text-accent-emphasis bg-accent-subtle rounded-2 text-decoration-none fs-7" href="<%= blogs_by_subcategory_path(@blog.category, @blog.subcategory) %>"><%= @blog.subcategory.name %></a>
-            </li>
-          </ul>
           <h2 class="display-3 fw-bold mb-4"><%= @blog.title %></h2>
         </div>
         <div class="entry-footer">
@@ -52,7 +44,7 @@
   <div class="container">
     <div class="row justify-content-md-center gy-3 gy-xl-4">
       <div class="col-12 col-md-9 gy-3 gy-xl-4 bsb-entry-content">
-        <%= display_content(@blog.content) %>
+        <%= @blog.content %>
       </div>
       <div class="col-12 col-md-3 d-none d-md-block">
         <h5 class="text-center mb-3">Trending Posts</h5>

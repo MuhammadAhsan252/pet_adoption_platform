@@ -1,0 +1,86 @@
+/*
+ * This is a manifest file that'll be compiled into application.css.
+ *
+ * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
+ * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
+ * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
+ * depending on specificity.
+ *
+ * Consider organizing styles into separate files for maintainability.
+ */
+
+
+/* Custom CSS for Green House Future */
+
+:root {
+    --bg-color: #cdd1e0;
+    --front-color: #388ae5;
+    --border-color: #e8e8eb;
+}
+
+h4{
+    font-weight: 700;
+}
+
+.image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+  
+.image-border {
+    border: 1px solid var(--border-color);
+}
+
+.image-background {
+    background-color: var(--bg-color);
+}
+
+.image-stretched {
+    width: 100%;
+    max-width: 100%;
+}
+
+.image {
+    max-width: 100%;
+    height: auto;
+}
+
+.image-with-background {
+    max-width: 60%;
+    margin: 0 auto;
+}
+
+.centered-content {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+} 
+
+.bsb-hero-5 .container>.row {
+    min-height: 600px;
+}
+
+.btn-primary{
+    background-color: #004AAD !important;
+}
+
+.text-primary{
+    color: #004AAD !important;
+} 
+
+.link-primary{
+    color: #004AAD !important;
+}
+
+.card-img-top .img-fluid {
+    height: 250px;
+    width: 100%;
+}
+
+@media (max-width: 767px) {
+    .card-img-top .img-fluid {
+        height: 300px;
+    }
+}
