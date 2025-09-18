@@ -69,3 +69,4 @@ gem "rubocop-rails"
 gem 'friendly_id', '~> 5.5.0'
 gem 'sitemap_generator'
 gem "meta-tags"
+gem 'faraday', '~> 2.13', '>= 2.13.4'

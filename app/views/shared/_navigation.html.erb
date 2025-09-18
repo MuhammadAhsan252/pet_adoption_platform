@@ -32,6 +32,19 @@
                 <a class="nav-link scroll-link" aria-current="page" href="<%= root_path %>">Home</a>
             </li>
 
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#!" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Name Generator</a>
+                <ul class="dropdown-menu border-0 shadow bsb-zoomIn" aria-labelledby="servicesDropdown">
+                    <li><a class="dropdown-item" href="<%= dog_name_generator_path %>">Dog Name Generator</a></li>
+                    <li><a class="dropdown-item" href="<%= cat_name_generator_path %>">Cat Name Generator</a></li>
+                    <li><a class="dropdown-item" href="<%= horse_name_generator_path %>">Horse Name Generator</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link scroll-link" href="<%= blogs_path %>">Blog</a>
+            </li>
+
             <li class="nav-item">
                 <a class="nav-link scroll-link" href="<%= pets_for_adoption_path %>">Adopt A Pet</a>
             </li>

@@ -27,6 +27,10 @@ SitemapGenerator::Sitemap.create do
   #   Article.find_each do |article|
   #     add article_path(article), :lastmod => article.updated_at
   #   end
+
+  add cat_name_generator_path, :priority => 0.7, :changefreq => 'monthly'
+  add dog_name_generator_path, :priority => 0.7, :changefreq => 'monthly'
+  add horse_name_generator_path, :priority => 0.7, :changefreq => 'monthly'
   Blog.find_each do |blog|
     add blog_path(blog), :lastmod => blog.updated_at, :priority => 0.8
   end

@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
     def initialize_metas
       set_meta_tags title: "Your Farm Partner",
                     description: "Petcurehub is a all in one platform for pet lovers",
-                    keywords: "pets, pet adoption, pet care, pet services, pet products, pet health, pet training, pet grooming",
+                    keywords: "pets, pet adoption, pet care, dog names, cat names, horse names, cat names generator, dog names generator, horse names generator",
                     og: {
                       title: "Your Farm Partner",
                       description: "Petcurehub is a all in one platform for pet lovers",
