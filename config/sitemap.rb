@@ -1,5 +1,5 @@
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = "https://www.petcurehub.com"
+SitemapGenerator::Sitemap.default_host = "https://www.petcurehub.live"
 SitemapGenerator::Sitemap.public_path = File.join(Rails.root, 'tmp').to_s
 
 SitemapGenerator::Sitemap.compress = false
