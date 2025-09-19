@@ -4,11 +4,11 @@ class ApplicationController < ActionController::Base
   before_action :initialize_metas
 
     def initialize_metas
-      set_meta_tags title: "Your Farm Partner",
+      set_meta_tags title: "Petcurehub",
                     description: "Petcurehub is a all in one platform for pet lovers",
                     keywords: "pets, pet adoption, pet care, dog names, cat names, horse names, cat names generator, dog names generator, horse names generator",
                     og: {
-                      title: "Your Farm Partner",
+                      title: "Petcurehub",
                       description: "Petcurehub is a all in one platform for pet lovers",
                       url: "https://www.petcurehub.com",
                       image: helpers.image_path("logo.png")
