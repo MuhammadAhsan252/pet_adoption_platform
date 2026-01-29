@@ -16,10 +16,10 @@ class Avo::Resources::Pet < Avo::BaseResource
   def fields
     field :id, as: :id
     field :name, as: :text
-    field :category, as: :select, options: ['Dog', 'Cat']
-    field :size, as: :select, options: ['Small', 'Medium', 'Large']
-    field :age, as: :select, options: ['Baby', 'Young', 'Adult', 'Senior']
-    field :gender, as: :select, options: ['Male', 'Female']
+    field :category, as: :select, options: [ "Dog", "Cat" ]
+    field :size, as: :select, options: [ "Small", "Medium", "Large" ]
+    field :age, as: :select, options: [ "Baby", "Young", "Adult", "Senior" ]
+    field :gender, as: :select, options: [ "Male", "Female" ]
     field :breed, as: :text
     field :color, as: :text
     field :spayed_neutered, as: :boolean

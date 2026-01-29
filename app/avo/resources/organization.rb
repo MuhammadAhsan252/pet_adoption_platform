@@ -17,8 +17,8 @@ class Avo::Resources::Organization < Avo::BaseResource
     field :name, as: :text
     field :address, as: :text
     field :city, as: :select, options: CS.states(:us).keys.flat_map { |state| CS.cities(state, :us) }.uniq.sort!
-    field :state, as: :select, options: CS.states(:us).map { |_, v| [v, v] }
-    field :country, as: :select, options: ['US']
+    field :state, as: :select, options: CS.states(:us).map { |_, v| [ v, v ] }
+    field :country, as: :select, options: [ "US" ]
     field :postal_code, as: :number
     field :phone, as: :text
     field :email, as: :text
