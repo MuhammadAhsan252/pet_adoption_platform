@@ -1,0 +1,62 @@
+<section class="bsb-blog-5 py-3 py-md-5 py-xl-8">
+  <div class="container">
+      <div class="row justify-content-md-center">
+      <div class="col-12 col-md-10 col-lg-8 col-xl-7 col-xxl-6">
+          <h2 class=" mb-4 mb-md-5 text-center">Adopt A Pet</h2>
+          <hr class="w-50 mx-auto mb-4 mb-md-5 border-dark-subtle">
+      </div>
+      </div>
+  </div>
+
+<div class="container mb-5">
+    <div class="row justify-content-md-center">
+        <div class="col-12 col-md-10 col-xxl-6">
+            <%= form_tag(pets_path, method: :get) do %>
+                <div class="row">
+                    <div class="col-6 col-lg">
+                        <label><strong>Type</strong></label><br>
+                        <%= select_tag :category, options_for_select([ 'Cat', 'Dog'], params[:category]), { prompt: 'Select Type', class: 'form-control' } %>
+                    </div>
+                    
+                    <div class="col-6 col-lg">
+                        <label><strong>Size</strong></label><br>
+                        <%= select_tag :size, options_for_select(['Small', 'Medium', 'Large'], params[:size]), { prompt: 'Select Size', class: 'form-control' } %>
+                    </div>
+
+                    <div class="col-6 col-lg">
+                        <label><strong>Gender</strong></label><br>
+                        <%= select_tag :gender, options_for_select(['Male', 'Female'], params[:gender]), { prompt: 'Select Gender', class: 'form-control' } %>
+                    </div>
+
+                    <div class="col-6 col-lg">
+                        <label><strong>Age</strong></label><br>
+                        <%= select_tag :age, options_for_select(['Baby', 'Young', 'Adult', 'Senior'], params[:age]), { prompt: 'Select Age', class: 'form-control' } %>
+                    </div>
+
+                    <div class="col-12 col-lg">
+                        <label></label><br>
+                        <%= submit_tag "Filter", class: 'w-100 btn btn-primary' %>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
+
+
+  <div class="container overflow-hidden">
+      <div class="row gy-4 gy-md-5 gx-xl-6 gy-xl-6 gx-xxl-9 gy-xxl-9">
+        <% if @pets.empty? %>
+            <div class="col-12">
+                <div class="alert alert-warning" role="alert">
+                    No pets found.
+                </div>
+            </div>
+        <% else %>
+            <% @pets.each do |pet| %>
+                <%= render 'pet', pet: pet %>
+            <% end %>
+        <% end %>
+      </div>
+  </div>
+</section>

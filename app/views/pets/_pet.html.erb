@@ -2,9 +2,9 @@
     <article>
     <div class="card border-0 bg-transparent">
         <figure class="card-img-top mb-4 overflow-hidden bsb-overlay-hover">
-        <a href="<%= pet_for_adoption_path(pet['id'])%>">
-            <% if pet["photos"].any? %>
-                <img class="img-fluid bsb-scale bsb-hover-scale-up" src="<%= pet["photos"][0]["medium"] %>" alt="Living">
+        <a href="<%= pet_path(pet) %>">
+            <% if pet.images.attached? %>
+                <%= image_tag pet.images.first, class: "img-fluid bsb-scale bsb-hover-scale-up", alt: "Living" %>
             <% else %>
                 <img class="img-fluid bsb-scale bsb-hover-scale-up" src="https://via.placeholder.com/800x600.png" alt="Living">
             <% end %>
@@ -23,20 +23,20 @@
 
             </ul>
             <h2 class="card-title entry-title h4 m-0">
-            <a class="link-dark text-decoration-none" href="<%= %>"><%= @pet.name %></a>
+            <a class="link-dark text-decoration-none" href="<%= %>"><%= pet.name %></a>
             </h2>
         </div>
         </div>
         <div class="card-footer border-0 bg-transparent p-0 m-0">
         <ul class="entry-meta list-unstyled align-items-center m-0">
             <li>
-                <strong>Breed:</strong> <%= 2pet %>
+                <strong>Breed:</strong> <%= pet.breed %>
             </li>
             <li>
-                <strong>Age:</strong> <%= @pet.age %>
+                <strong>Age:</strong> <%= pet.age %>
             </li>
             <li>
-                <strong>Gender:</strong> <%= @pet.gender %>
+                <strong>Gender:</strong> <%= pet.gender %>
             </li>
         </ul>
         </div>
