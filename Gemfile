@@ -54,7 +54,7 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
-  gem 'dotenv'
+  gem "dotenv"
 end
 
 group :test do
@@ -66,7 +66,7 @@ end
 gem "devise", "~> 4.9"
 gem "avo", ">= 3.2.1"
 gem "rubocop-rails"
-gem 'friendly_id', '~> 5.5.0'
-gem 'sitemap_generator'
+gem "friendly_id", "~> 5.5.0"
+gem "sitemap_generator"
 gem "meta-tags"
-gem 'faraday', '~> 2.13', '>= 2.13.4'
+gem "faraday", "~> 2.13", ">= 2.13.4"

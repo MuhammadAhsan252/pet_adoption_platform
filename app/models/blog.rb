@@ -1,6 +1,6 @@
 class Blog < ApplicationRecord
     extend FriendlyId
-    
+
     has_rich_text :content
     has_one_attached :cover_image
     has_many_attached :trix_attachments
